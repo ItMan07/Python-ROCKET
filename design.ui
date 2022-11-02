@@ -299,7 +299,7 @@
       <bool>false</bool>
      </property>
     </widget>
-    <widget class="QLCDNumber" name="lcdAltitude_2">
+    <widget class="QLCDNumber" name="lcdSpeed">
      <property name="geometry">
       <rect>
        <x>170</x>
@@ -309,7 +309,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLCDNumber" name="lcdAltitude_3">
+    <widget class="QLCDNumber" name="lcdAcceleration">
      <property name="geometry">
       <rect>
        <x>470</x>
