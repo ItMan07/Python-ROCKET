@@ -57,19 +57,23 @@ def OnRead():
         print(f'Ускорение: {data[1]}')
         ui.lcdAcceleration.display(4.5)
 
+    else:
+        print(data[0])
+
 
 # ======================================= ФУНКЦИИ ======================================================================
 
+def sendServoValue():
+    val = ui.dialServo.value()
+    ui.progBarServo.setValue(val)
+    print(f"Значение крутилки сервопривода: {val}")
 
-# def turnLed():
-#     global flagBtnLed
-#
-#     if flagBtnLed:
-#         flagBtnLed = False
-#         serialSend([0, 0])
-#     else:
-#         flagBtnLed = True
-#         serialSend([0, 1])
+
+def setBtnParachute():
+    if ui.sliderParachute.value() == 2:
+        ui.btnParachute.setEnabled(True)
+    else:
+        ui.btnParachute.setDisabled(True)
 
 
 # ======================================= ИНТЕРФЕЙС ====================================================================
@@ -90,15 +94,13 @@ def load_UI():
     ui.lcdPressure.setDecMode()
     ui.lcdAcceleration.setDecMode()
 
-    # ui.btnLed.clicked.connect(turnLed)
+    ui.btnServo.clicked.connect(sendServoValue)
+
+    ui.sliderParachute.valueChanged.connect(setBtnParachute)
 
     ui.show()
     app.exec()
 
 
-def main():
-    load_UI()
-
-
 if __name__ == "__main__":
-    main()
+    load_UI()
